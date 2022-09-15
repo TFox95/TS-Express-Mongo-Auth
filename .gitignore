@@ -1,0 +1,6 @@
+# ignore folders to ignore
+dist/
+
+# file types to ignore
+
+.log
