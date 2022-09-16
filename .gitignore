@@ -1,4 +1,4 @@
-# ignore folders to ignore
+# folders to ignore
 dist/
 node_modules/
 
