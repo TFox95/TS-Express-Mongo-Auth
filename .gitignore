@@ -1,5 +1,6 @@
 # ignore folders to ignore
 dist/
+node_modules/
 
 # file types to ignore
 

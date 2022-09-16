@@ -14,8 +14,8 @@ const extractUser = (req: Request, res: Response, next: NextFunction) => {
         authToken = req.headers.authorization.split(" ")[1];
 
         try {
-            let decodedToken = jwtDecode<MyToken>(authToken),
-                currentUser = decodedToken.username;
+            decoded = jwtDecode<MyToken>(authToken);
+            let currentUser = decoded.username;
             UserSchema.find({ currentUser }).deleteOne({}, (error, result) => {
                 if (error) {
                     logging.serverError(NAMESPACE, error.message, error);
