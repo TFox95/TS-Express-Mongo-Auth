@@ -21,6 +21,7 @@
     "jwt-decode": "^3.1.2",
     "jwt-redis": "^7.0.3",
     "mongoose": "^6.5.2",
+    "nodemon": "^2.0.20",
     "redis": "^4.3.0"
   },
   "devDependencies": {

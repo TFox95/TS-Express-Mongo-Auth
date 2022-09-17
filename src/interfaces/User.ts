@@ -4,6 +4,7 @@ interface IUser extends Document {
     uuid: string;
     username: string;
     password: string;
+    re_password?: string;
     role: string;
     validated: boolean;
     phnoe?: number;

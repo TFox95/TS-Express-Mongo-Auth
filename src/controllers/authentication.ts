@@ -42,7 +42,7 @@ const registerController = (req: Request, res: Response, next: NextFunction) => 
                         error: hashErr
                     });
                 }
-                const v4UUID = randomUUID();
+                const v4UUID = `user_${randomUUID()}`
                 const _user = new UserSchema({
                     _id: new mongoose.Types.ObjectId(),
                     uuid: v4UUID,
@@ -54,7 +54,8 @@ const registerController = (req: Request, res: Response, next: NextFunction) => 
                     address: null,
                     subscribed: null
                 });
-                UserSchema.findOne({ username: req.body.username })
+                UserSchema
+                    .findOne({ username: req.body.username })
                     .exec()
                     .then((user) => {
                         if (!user) {
