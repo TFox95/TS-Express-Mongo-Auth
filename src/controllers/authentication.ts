@@ -5,6 +5,7 @@ import { randomUUID } from "crypto";
 import mongoose from "mongoose";
 import UserSchema from "../models/UserSchema";
 import signJWT from "../functions/signJWT";
+import IUser from "../interfaces/User";
 
 /** setting const variables */
 const NAMESPACE = "Authentication CONTROLLER";
@@ -28,7 +29,7 @@ const validateToken = (req: Request, res: Response, next: NextFunction) => {
 const registerController = (req: Request, res: Response, next: NextFunction) => {
     /** Checking if requested method is "POST" */
     if (req.method == "POST") {
-        let { username, password, re_password } = req.body;
+        let { username, password, re_password } = req.body as IUser;
 
         /** Here we'll be checking if the password and re_password match each other
          *  if they do then we will proceed to hash the password. If there's an hash
