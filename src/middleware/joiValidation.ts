@@ -24,11 +24,21 @@ const VaildateJoi = (schema: ObjectSchema) => {
 
 
 const Schemas = {
-    UserData: Joi.object<IUser>({
-        username: Joi.string().pattern(new RegExp(`^[a-zA-Z0-9-_]{5,25}$`)).required(),
-        password: Joi.string().pattern(new RegExp(`^[a-zA-Z0-9_@./#*&-]{7,20}$`)).required(),
-        re_password: Joi.string().pattern(new RegExp(`^[a-zA-Z0-9_@./#*&-]{7,20}$`)).required()
-    }),
+    User: {
+        createUser: Joi.object<IUser>({
+            username: Joi.string().pattern(new RegExp(`^[a-zA-Z0-9-_]{5,25}$`)).required(),
+            password: Joi.string().pattern(new RegExp(`^[a-zA-Z0-9_@./#*&-]{7,20}$`)).required(),
+            re_password: Joi.string().pattern(new RegExp(`^[a-zA-Z0-9_@./#*&-]{7,20}$`)).required()
+        }),
+        changePassword: Joi.object<IUser>({
+            old_password: Joi.string().pattern(new RegExp(`^[a-zA-Z0-9_@./#*&-]{7,20}$`)).required(),
+            password: Joi.string().pattern(new RegExp(`^[a-zA-Z0-9_@./#*&-]{7,20}$`)).required(),
+            re_password: Joi.string().pattern(new RegExp(`^[a-zA-Z0-9_@./#*&-]{7,20}$`)).required(),
+        }),
+        updateUsername: Joi.object<IUser>({
+            username: Joi.string().pattern(new RegExp(`^[a-zA-Z0-9-_]{5,25}$`)).required()
+        })
+    },
 }
 
 export { VaildateJoi, Schemas }

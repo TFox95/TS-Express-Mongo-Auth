@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.post("/validateToken", extractJWT, authController.validateToken);
 router.post("/deleteUser", extractUser);
-router.post("/register", VaildateJoi(Schemas.UserData), authController.registerController);
+router.post("/register", VaildateJoi(Schemas.User.createUser), authController.registerController);
 router.post("/login", authController.loginController);
 router.post("/logout", authController.logoutController);
 router.get("/getUsers", authController.getUsers);

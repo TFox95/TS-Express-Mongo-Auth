@@ -5,6 +5,7 @@ interface IUser extends Document {
     username: string;
     password: string;
     re_password?: string;
+    old_password?: string;
     role: string;
     validated: boolean;
     phnoe?: number;
