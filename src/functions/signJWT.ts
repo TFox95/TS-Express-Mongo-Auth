@@ -13,24 +13,25 @@ const signJWT = (user: IUser, callback: (error: Error | null, token: string | nu
     let timeSinceEpoch = new Date().getTime();
     let expireTime: number = timeSinceEpoch + Number(config.server.token.expireTime) * 100000;
     let expirationTimeinSeconds = Math.floor(expireTime / 1000);
-
+    console.log(expireTime)
     logging.serverInfo(NAMESPACE, `Attempting to sign token for ${user._id}`);
 
     try {
         jwt.sign(
-            {
+            {   // Populate the payload
                 id: user._id,
                 username: user.username,
                 role: user.role
             },
-            config.server.token.secret,
-            {
+            config.server.token.secret, // The jwt Secret
+
+            {   // jwt config settings
                 issuer: config.server.token.issuer,
                 algorithm: `HS256`,
                 expiresIn: expirationTimeinSeconds
             },
             /** during jwt callback we will include error and token
-             * so that is there's an error we will callback that error
+             * so that if there's an error we will callback that error
              * while nulling token and if there's no error we will do the
              * opposite.
              */
