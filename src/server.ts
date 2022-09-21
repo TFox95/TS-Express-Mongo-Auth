@@ -1,7 +1,7 @@
 import http from "http";
 import express, { Request, Response, NextFunction } from "express";
 import bodyParser from "body-parser";
-import mongoose, { Error } from "mongoose";
+import mongoose from "mongoose";
 import logging from "./config/logging";
 import config from "./config/config";
 import sampleRoutes from "./routes/sample";
