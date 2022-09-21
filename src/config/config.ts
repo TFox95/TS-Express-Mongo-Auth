@@ -1,5 +1,4 @@
 import dotenv from "dotenv";
-import { TokenExpiredError } from "jsonwebtoken";
 
 dotenv.config();
 
