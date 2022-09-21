@@ -2,13 +2,6 @@ import { Request, Response, NextFunction } from "express";
 import logging from "../config/logging";
 import jwt from "jsonwebtoken";
 import config from "../config/config";
-import redis from "redis";
-let JWTR = require("jwt-redis").deafult;
-
-const extractJWTredis = (res: Response, req: Request, next: NextFunction) => {
-    let redisClient = redis.createClient();
-    redisClient.connect();
-};
 
 const NAMESPACE = "Auth Token Extract";
 

@@ -20,6 +20,7 @@ const signJWT = (user: IUser, callback: (error: Error | null, token: string | nu
         jwt.sign(
             {   // Populate the payload
                 id: user._id,
+                uuid: user.uuid,
                 username: user.username,
                 role: user.role
             },

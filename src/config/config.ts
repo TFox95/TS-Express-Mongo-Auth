@@ -13,9 +13,9 @@ const MONGO_OPTIONS = {
     retryWrites: false
 };
 
-const MONGO_USERNAME = process.env.MONGO_USERNAME || `superuser`;
-const MONGO_PASSWORD = process.env.MONGO_PASSWORD || `secretpassword`;
-const MONGO_HOST = process.env.MONGO_HOST || `restfulcluster.moi1uhz.mongodb.net/?retryWrites=true&w=majority`;
+const MONGO_USERNAME:string = `${process.env.MONGO_USERNAME}`;
+const MONGO_PASSWORD:string = `${process.env.MONGO_PASSWORD}`;
+const MONGO_HOST:string = `${process.env.MONGO_HOST}`;
 
 const MONGO = {
     host: MONGO_HOST,
@@ -26,12 +26,12 @@ const MONGO = {
 };
 
 /** Server Config */
-const SERVER_HOSTNAME = process.env.SERVER_HOSTNAME || `localhost`;
-const SERVER_PORT = process.env.SERVER_PORT || 1337;
+const SERVER_HOSTNAME:string = `${process.env.SERVER_HOSTNAME}`;
+const SERVER_PORT:string = `${process.env.SERVER_PORT}` ;
 
-const SERVER_TOKEN_EXPIRE_TIME = process.env.SERVER_TOKEN_EXPIRE_TIME || 3600;
-const SERVER_TOKEN_ISSUER = process.env.SERVER_TOKEN_ISSUER || "FoxCorp.";
-const SERVER_TOKEN_SECRET = process.env.SERVER_TOKEN_SECRET || "superencryptedsecret";
+const SERVER_TOKEN_EXPIRE_TIME:string = `${process.env.SERVER_TOKEN_EXPIRE_TIME}`;
+const SERVER_TOKEN_ISSUER:string = `${process.env.SERVER_TOKEN_ISSUER}`;
+const SERVER_TOKEN_SECRET:string = `${process.env.SERVER_TOKEN_SECRET}`;
 
 const SERVER = {
     hostname: SERVER_HOSTNAME,

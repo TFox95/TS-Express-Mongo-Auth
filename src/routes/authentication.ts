@@ -6,7 +6,7 @@ import { Schemas, VaildateJoi } from "../middleware/joiValidation";
 
 const router = express.Router();
 
-router.post("/validateToken", extractJWT, authController.validateToken);
+router.get("/validateToken", extractJWT, authController.validateToken);
 router.post("/deleteUser", extractUser);
 router.post("/register", VaildateJoi(Schemas.User.createUser), authController.registerController);
 router.post("/login", authController.loginController);

@@ -6,18 +6,37 @@ import mongoose from "mongoose";
 import UserSchema from "../models/UserSchema";
 import signJWT from "../functions/signJWT";
 import IUser from "../interfaces/User";
+import jwtDecode from "jwt-decode";
+import MyToken from "../interfaces/Token";
 
 /** setting const variables */
 const NAMESPACE = "Authentication CONTROLLER";
 
 /** Defining logic for Authorization */
 const validateToken = (req: Request, res: Response, next: NextFunction) => {
-    if (req.method == "POST") {
-        logging.serverInfo(NAMESPACE, `Token validated, user authorized`);
+    if (req.method == "GET") {
+        try {
+            logging.serverInfo(NAMESPACE, `Token validated, user authorized`);
+            let authtoken, decoded;
+            authtoken = req.headers.authorization;
 
-        return res.status(200).json({
-            message: "Authorized"
-        });
+            if (authtoken) {
+                decoded = jwtDecode<MyToken>(authtoken);
+                return res.status(200).json({
+                    message: "Authorized",
+                    decoded
+                });
+            }
+        } catch (err: any) {
+            logging.serverInfo(NAMESPACE, `Token Error, User cannot be authorized token; Token expired or Invalid`,err);
+            res.status(500).json({
+                message: err.message
+            });
+
+        }
+        
+
+        
     } else {
         logging.serverError(NAMESPACE, `Invalid Request Method used; Error`);
         return res.status(400).json({
