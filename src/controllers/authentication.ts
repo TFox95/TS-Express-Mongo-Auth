@@ -62,10 +62,9 @@ const registerController = (req: Request, res: Response, next: NextFunction) => 
                         error: hashErr
                     });
                 }
-                const v4UUID = `user_${randomUUID()}`
                 const _user = new UserSchema({
                     _id: new mongoose.Types.ObjectId(),
-                    uuid: v4UUID,
+                    uuid: `user_${randomUUID()}`,
                     username,
                     password: hash,
                     role: "basic",
@@ -82,9 +81,9 @@ const registerController = (req: Request, res: Response, next: NextFunction) => 
                             return _user
                                 .save()
                                 .then((user) => {
-                                    logging.serverInfo(NAMESPACE, `Attempt to Create user is successful`, user);
+                                    logging.serverInfo(NAMESPACE, `Attempt to Create user is successful`);
                                     return res.status(201).json({
-                                        message: `User Created, [${user}]`
+                                        message: `User, ${user.username}, has been Created`
                                     });
                                 })
                                 .catch((error) => {
