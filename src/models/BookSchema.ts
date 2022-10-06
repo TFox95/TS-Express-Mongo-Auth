@@ -7,7 +7,7 @@ const BookSchema: Schema = new Schema(
         title: {type:String, required: true},
         description: {type:String, required: true},
         price: {type:Number, required: true},
-        postedBy: {type:String, required: true}
+        postedBy: {type: mongoose.Schema.Types.ObjectId, required: true}
     },
     {
         timestamps: true,

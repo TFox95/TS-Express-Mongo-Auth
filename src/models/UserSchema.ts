@@ -8,8 +8,10 @@ const UserSchema: Schema = new Schema(
         password: { type: String, required: true },
         validated: { type: Boolean, required: true },
         phone: { type: Number, required: false },
+        role: {type: String, required: false},
         address: { type: String, required: false },
-        subscribed: { type: Boolean, required: false }
+        subscribed: { type: Boolean, required: false },
+        listOfBookID: {type: String, required: false}
     },
     {
         timestamps: true

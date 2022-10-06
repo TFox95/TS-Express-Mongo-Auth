@@ -1,4 +1,4 @@
-import { Document } from "mongoose";
+import mongoose, { Document } from "mongoose";
 
 interface IUser extends Document {
     uuid: string;
@@ -8,9 +8,10 @@ interface IUser extends Document {
     old_password?: string;
     role: string;
     validated: boolean;
-    phnoe?: number;
+    phone?: number;
     address?: string;
     subscribed?: boolean;
+    Books?: {type: mongoose.Types.ObjectId, ref: `books`}
 }
 
 export default IUser;
